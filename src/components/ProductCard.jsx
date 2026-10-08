@@ -1,12 +1,17 @@
 import { Heart, Star, ShoppingBag } from "lucide-react";
+import { useShop } from "../context/shop";
 
-const formatPrice = (price) => {
-  return "₹" + price.toLocaleString("en-IN");
-};
+const formatPrice = (price) => "₹" + price.toLocaleString("en-IN");
 
-const ProductCard = ({ product, isFavorite, onToggleFavorite, onAddToCart }) => {
+const ProductCard = ({ product }) => {
+  const { navigate, wishlist, toggleWishlist, addToCart } = useShop();
+  const isFavorite = wishlist.has(product.id);
+
   return (
-    <div className="bg-[#151515] border border-[#292929] rounded-[8px] overflow-hidden transition-all duration-200 hover:border-[#3a3a3a] group">
+    <div
+      onClick={() => navigate("product", product.id)}
+      className="bg-[#151515] border border-[#292929] rounded-[8px] overflow-hidden transition-all duration-200 hover:border-[#3a3a3a] group cursor-pointer"
+    >
       {/* Image */}
       <div className="relative w-full h-[140px] bg-[#111] overflow-hidden">
         <img
@@ -22,7 +27,10 @@ const ProductCard = ({ product, isFavorite, onToggleFavorite, onAddToCart }) => 
 
         {/* Favorite */}
         <button
-          onClick={() => onToggleFavorite(product.id)}
+          onClick={(e) => {
+            e.stopPropagation();
+            toggleWishlist(product.id);
+          }}
           className="absolute top-2 right-2 w-[26px] h-[26px] rounded-full bg-[#0B0B0D]/80 backdrop-blur-sm flex items-center justify-center transition-colors duration-200 cursor-pointer"
           aria-label="Toggle favorite"
         >
@@ -63,7 +71,10 @@ const ProductCard = ({ product, isFavorite, onToggleFavorite, onAddToCart }) => 
             {formatPrice(product.price)}
           </span>
           <button
-            onClick={() => onAddToCart(product)}
+            onClick={(e) => {
+              e.stopPropagation();
+              addToCart(product, 1);
+            }}
             className="flex items-center gap-1.5 px-3 h-[28px] bg-[#FF6B00] hover:bg-[#e65f00] text-white text-[11px] font-semibold rounded-[6px] transition-colors duration-200 cursor-pointer"
           >
             <ShoppingBag size={12} strokeWidth={2} />

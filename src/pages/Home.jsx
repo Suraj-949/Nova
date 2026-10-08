@@ -1,16 +1,12 @@
 import { useState, useMemo } from "react";
 import products from "../data/products.json";
-import Navbar from "../components/Navbar";
 import SearchBar from "../components/SearchBar";
 import CategoryFilter from "../components/CategoryFilter";
 import ProductGrid from "../components/ProductGrid";
-import Footer from "../components/Footer";
 
 const Home = () => {
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [, setCart] = useState([]);
-  const [favorites, setFavorites] = useState(new Set());
 
   const categories = useMemo(() => {
     const cats = [...new Set(products.map((p) => p.category))];
@@ -37,26 +33,8 @@ const Home = () => {
     return result;
   }, [search, selectedCategory]);
 
-  const handleAddToCart = (product) => {
-    setCart((prev) => [...prev, product]);
-  };
-
-  const handleToggleFavorite = (id) => {
-    setFavorites((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) {
-        next.delete(id);
-      } else {
-        next.add(id);
-      }
-      return next;
-    });
-  };
-
   return (
-    <div className="min-h-screen w-full bg-[#0B0B0D]">
-      <Navbar />
-
+    <main className="w-full">
       {/* Hero */}
       <section className="flex flex-col items-center py-15">
         <h1 className="text-[42px] font-bold leading-[1.2] text-center text-white">
@@ -75,7 +53,7 @@ const Home = () => {
       </section>
 
       {/* Category Filters */}
-      <section className="flex justify-left px-11 pb-8">
+      <section className="flex justify-start px-11 pb-8">
         <CategoryFilter
           categories={categories}
           selected={selectedCategory}
@@ -87,7 +65,9 @@ const Home = () => {
       <section className="w-full px-11 mb-4">
         <div className="flex items-center justify-between pb-3 border-b border-[#1e1e1e]">
           <div className="flex items-center gap-3">
-            <h2 className="text-[16px] font-semibold text-white">All Products</h2>
+            <h2 className="text-[16px] font-semibold text-white">
+              {selectedCategory === "All" ? "All Products" : selectedCategory}
+            </h2>
             <span className="text-[11px] font-medium text-[#FF6B00] tracking-[0.05em]">
               {filteredProducts.length} PRODUCTS
             </span>
@@ -100,16 +80,9 @@ const Home = () => {
 
       {/* Product Grid */}
       <section className="mx-auto px-11 pb-16">
-        <ProductGrid
-          products={filteredProducts}
-          favorites={favorites}
-          onToggleFavorite={handleToggleFavorite}
-          onAddToCart={handleAddToCart}
-        />
+        <ProductGrid products={filteredProducts} />
       </section>
-
-      <Footer />
-    </div>
+    </main>
   );
 };
 
