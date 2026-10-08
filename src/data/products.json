@@ -1,0 +1,252 @@
+[
+    {
+        "id": 1,
+        "title": "Wireless Noise Cancelling Headphones",
+        "category": "Electronics",
+        "price": 12999,
+        "rating": 4.7,
+        "stock": 18,
+        "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
+        "description": "Premium wireless headphones with active noise cancellation and up to 30 hours of battery life."
+    },
+    {
+        "id": 2,
+        "title": "Mechanical RGB Gaming Keyboard",
+        "category": "Electronics",
+        "price": 5499,
+        "rating": 4.5,
+        "stock": 25,
+        "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3",
+        "description": "Compact mechanical keyboard with RGB lighting and responsive switches for gaming and work."
+    },
+    {
+        "id": 3,
+        "title": "Smart Fitness Watch",
+        "category": "Electronics",
+        "price": 7999,
+        "rating": 4.4,
+        "stock": 12,
+        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
+        "description": "Track workouts, heart rate, sleep and daily activity with this modern fitness smartwatch."
+    },
+    {
+        "id": 4,
+        "title": "Portable Bluetooth Speaker",
+        "category": "Electronics",
+        "price": 3499,
+        "rating": 4.6,
+        "stock": 30,
+        "image": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1",
+        "description": "Compact waterproof Bluetooth speaker with powerful sound and up to 12 hours of playback."
+    },
+    {
+        "id": 5,
+        "title": "USB-C Fast Charging Power Bank",
+        "category": "Electronics",
+        "price": 2499,
+        "rating": 4.3,
+        "stock": 42,
+        "image": "https://images.unsplash.com/photo-1609592424933-8f3c9f3e9c5d",
+        "description": "20000mAh power bank with USB-C fast charging support."
+    },
+    {
+        "id": 6,
+        "title": "Premium Cotton Oversized T-Shirt",
+        "category": "Fashion",
+        "price": 999,
+        "rating": 4.5,
+        "stock": 50,
+        "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab",
+        "description": "Comfortable oversized cotton t-shirt with a relaxed fit."
+    },
+    {
+        "id": 7,
+        "title": "Classic Denim Jacket",
+        "category": "Fashion",
+        "price": 2499,
+        "rating": 4.4,
+        "stock": 20,
+        "image": "https://images.unsplash.com/photo-1551028719-00167b16eac5",
+        "description": "Classic denim jacket designed for everyday casual outfits."
+    },
+    {
+        "id": 8,
+        "title": "Minimal Leather Backpack",
+        "category": "Fashion",
+        "price": 3299,
+        "rating": 4.6,
+        "stock": 15,
+        "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62",
+        "description": "Minimal backpack with multiple compartments for laptops and essentials."
+    },
+    {
+        "id": 9,
+        "title": "Running Sneakers",
+        "category": "Fashion",
+        "price": 4599,
+        "rating": 4.7,
+        "stock": 28,
+        "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff",
+        "description": "Lightweight running sneakers with breathable mesh and responsive cushioning."
+    },
+    {
+        "id": 10,
+        "title": "Classic Analog Watch",
+        "category": "Fashion",
+        "price": 3899,
+        "rating": 4.3,
+        "stock": 17,
+        "image": "https://images.unsplash.com/photo-1524805444758-089113d48a6d",
+        "description": "Elegant analog watch featuring a minimalist dial and stainless steel case."
+    },
+    {
+        "id": 11,
+        "title": "Ergonomic Office Chair",
+        "category": "Home",
+        "price": 8999,
+        "rating": 4.6,
+        "stock": 10,
+        "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7",
+        "description": "Ergonomic office chair with lumbar support and adjustable height."
+    },
+    {
+        "id": 12,
+        "title": "Modern Table Lamp",
+        "category": "Home",
+        "price": 1599,
+        "rating": 4.2,
+        "stock": 35,
+        "image": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c",
+        "description": "Minimal table lamp with warm ambient lighting."
+    },
+    {
+        "id": 13,
+        "title": "Ceramic Coffee Mug Set",
+        "category": "Home",
+        "price": 899,
+        "rating": 4.5,
+        "stock": 45,
+        "image": "https://images.unsplash.com/photo-1514228742587-6b1558fcf93a",
+        "description": "Set of elegant ceramic coffee mugs for everyday use."
+    },
+    {
+        "id": 14,
+        "title": "Minimal Wall Clock",
+        "category": "Home",
+        "price": 1299,
+        "rating": 4.1,
+        "stock": 22,
+        "image": "https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c",
+        "description": "Modern minimalist wall clock designed for contemporary interiors."
+    },
+    {
+        "id": 15,
+        "title": "Soft Cotton Bedsheet",
+        "category": "Home",
+        "price": 1799,
+        "rating": 4.4,
+        "stock": 26,
+        "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304",
+        "description": "Soft and breathable cotton bedsheet with a comfortable finish."
+    },
+    {
+        "id": 16,
+        "title": "Hydrating Face Moisturizer",
+        "category": "Beauty",
+        "price": 699,
+        "rating": 4.5,
+        "stock": 60,
+        "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883",
+        "description": "Lightweight daily moisturizer designed to keep skin hydrated."
+    },
+    {
+        "id": 17,
+        "title": "Vitamin C Face Serum",
+        "category": "Beauty",
+        "price": 899,
+        "rating": 4.6,
+        "stock": 40,
+        "image": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be",
+        "description": "Vitamin C serum formulated for a brighter and smoother-looking complexion."
+    },
+    {
+        "id": 18,
+        "title": "Matte Lipstick Set",
+        "category": "Beauty",
+        "price": 1199,
+        "rating": 4.3,
+        "stock": 32,
+        "image": "https://images.unsplash.com/photo-1586495777744-4413f21062fa",
+        "description": "Long-lasting matte lipstick collection featuring multiple shades."
+    },
+    {
+        "id": 19,
+        "title": "Premium Hair Dryer",
+        "category": "Beauty",
+        "price": 2199,
+        "rating": 4.4,
+        "stock": 19,
+        "image": "https://images.unsplash.com/photo-1522338242992-e1a54906a8da",
+        "description": "Powerful hair dryer with multiple heat settings."
+    },
+    {
+        "id": 20,
+        "title": "Skincare Essentials Kit",
+        "category": "Beauty",
+        "price": 2499,
+        "rating": 4.7,
+        "stock": 14,
+        "image": "https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8",
+        "description": "Complete skincare starter kit containing cleanser, moisturizer and serum."
+    },
+    {
+        "id": 21,
+        "title": "Stainless Steel Water Bottle",
+        "category": "Sports",
+        "price": 1299,
+        "rating": 4.6,
+        "stock": 55,
+        "image": "https://images.unsplash.com/photo-1602143407151-7111542de6e8",
+        "description": "Double-wall insulated stainless steel bottle for hot and cold drinks."
+    },
+    {
+        "id": 22,
+        "title": "Premium Yoga Mat",
+        "category": "Sports",
+        "price": 999,
+        "rating": 4.5,
+        "stock": 38,
+        "image": "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f",
+        "description": "Non-slip yoga mat with comfortable cushioning for workouts."
+    },
+    {
+        "id": 23,
+        "title": "Adjustable Dumbbell Set",
+        "category": "Sports",
+        "price": 5999,
+        "rating": 4.7,
+        "stock": 9,
+        "image": "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61",
+        "description": "Adjustable dumbbell set suitable for strength training at home."
+    },
+    {
+        "id": 24,
+        "title": "Professional Basketball",
+        "category": "Sports",
+        "price": 1499,
+        "rating": 4.4,
+        "stock": 24,
+        "image": "https://images.unsplash.com/photo-1546519638-68e109498ffc",
+        "description": "Durable basketball designed for indoor and outdoor recreational play."
+    },
+    {
+        "id": 25,
+        "title": "Resistance Bands Set",
+        "category": "Sports",
+        "price": 799,
+        "rating": 4.5,
+        "stock": 48,
+        "image": "https://images.unsplash.com/photo-1598289431512-b97b0917affc",
+        "description": "Resistance bands with multiple levels for full-body workouts."
+    }
+]
