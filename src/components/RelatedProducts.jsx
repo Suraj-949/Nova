@@ -1,9 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import products from "../data/products.json";
-import { useShop } from "../context/shop";
 import ProductCard from "./ProductCard";
 
 const RelatedProducts = ({ currentProduct }) => {
-  const { navigate } = useShop();
+  const navigate = useNavigate();
 
   const sameCategory = products.filter(
     (p) => p.category === currentProduct.category && p.id !== currentProduct.id
@@ -24,7 +24,7 @@ const RelatedProducts = ({ currentProduct }) => {
           You might also like
         </h2>
         <button
-          onClick={() => navigate("home")}
+          onClick={() => navigate("/")}
           className="text-[13px] text-[#FF6B00] hover:text-[#ff8534] transition-colors duration-200 cursor-pointer"
         >
           Explore Collection →

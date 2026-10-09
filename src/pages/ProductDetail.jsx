@@ -49,7 +49,6 @@ const ProductDetail = () => {
     );
   }
 
-  const inStock = typeof product.stock === "number" && product.stock > 0;
   const isFavorite = wishlist.has(product.id);
   const highlights = Array.isArray(product.highlights)
     ? product.highlights
@@ -58,7 +57,6 @@ const ProductDetail = () => {
       : null;
 
   const handleAddToCart = () => {
-    if (!inStock) return;
     addToCart(product, quantity);
     setToast(true);
   };
@@ -115,24 +113,6 @@ const ProductDetail = () => {
               )}
             </div>
 
-            {/* Stock */}
-            <div className="flex items-center gap-2 mt-3">
-              <span
-                className={`w-[7px] h-[7px] rounded-full ${inStock ? "bg-[#22c55e]" : "bg-[#ef4444]"
-                  }`}
-              />
-              <span
-                className={`text-[12px] font-medium ${inStock ? "text-[#22c55e]" : "text-[#ef4444]"
-                  }`}
-              >
-                {inStock ? `In Stock` : "Out of Stock"}
-              </span>
-              {inStock && (
-                <span className="text-[12px] text-[#666]">
-                  · {product.stock} available
-                </span>
-              )}
-            </div>
 
             {/* Description */}
             <p className="text-[13px] text-[#888] leading-[1.75] mt-5">
@@ -162,15 +142,13 @@ const ProductDetail = () => {
               <QuantitySelector
                 value={quantity}
                 onChange={setQuantity}
-                max={product.stock}
               />
             </div>
 
             {/* Add to Cart */}
             <button
               onClick={handleAddToCart}
-              disabled={!inStock}
-              className="w-full h-[46px] mt-5 bg-[#FF6B00] hover:bg-[#e65f00] disabled:bg-[#2a2a2a] disabled:text-[#666] disabled:cursor-not-allowed text-white text-[14px] font-semibold rounded-[6px] flex items-center justify-center gap-2 transition-colors duration-200 cursor-pointer"
+              className="w-full h-[46px] mt-5 bg-[#FF6B00] hover:bg-[#e65f00] text-white text-[14px] font-semibold rounded-[6px] flex items-center justify-center gap-2 transition-colors duration-200 cursor-pointer"
             >
               <ShoppingBag size={17} strokeWidth={2} />
               Add to Cart

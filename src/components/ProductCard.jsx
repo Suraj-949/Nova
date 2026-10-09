@@ -55,7 +55,6 @@ const ProductCard = ({ product }) => {
         <div className="flex items-center gap-1 mb-1.5">
           <Star size={11} className="text-[#FF6B00] fill-[#FF6B00]" />
           <span className="text-[11px] text-[#ccc] font-medium">{product.rating}</span>
-          <span className="text-[11px] text-[#555]">({product.stock} in stock)</span>
         </div>
 
         {/* Title */}

@@ -1,4 +1,5 @@
-import { Trash2, ShoppingBag, ArrowLeft } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Trash2, ShoppingBag, ArrowLeft, Info } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 import { useShop } from "../context/shop";
@@ -15,6 +16,13 @@ const Cart = () => {
     cartTotal,
   } = useShop();
   const navigate = useNavigate();
+  const [showCheckoutNotice, setShowCheckoutNotice] = useState(false);
+
+  useEffect(() => {
+    if (!showCheckoutNotice) return;
+    const timer = setTimeout(() => setShowCheckoutNotice(false), 2200);
+    return () => clearTimeout(timer);
+  }, [showCheckoutNotice]);
 
   if (cartItems.length === 0) {
     return (
@@ -45,7 +53,9 @@ const Cart = () => {
     <main className="w-full px-11 py-8">
       <div className="max-w-[1200px] mx-auto">
         <div className="flex items-end gap-3 mb-6">
-          <h1 className="text-[26px] font-bold text-white">Shopping Cart</h1>
+          <h1 className="text-[26px] font-bold text-white">
+            Shopping Cart
+          </h1>
           <span className="text-[13px] text-[#666] pb-1">
             {cartCount} item{cartCount !== 1 ? "s" : ""}
           </span>
@@ -86,7 +96,6 @@ const Cart = () => {
                 <QuantitySelector
                   value={quantity}
                   onChange={(q) => updateCartQuantity(product.id, q)}
-                  max={product.stock}
                 />
 
                 <span className="w-[110px] text-right text-[15px] font-bold text-white">
@@ -130,7 +139,10 @@ const Cart = () => {
               </span>
             </div>
 
-            <button className="w-full h-[46px] mt-5 bg-[#FF6B00] hover:bg-[#e65f00] text-white text-[14px] font-semibold rounded-[6px] transition-colors duration-200 cursor-pointer">
+            <button
+              onClick={() => setShowCheckoutNotice(true)}
+              className="w-full h-[46px] mt-5 bg-[#FF6B00] hover:bg-[#e65f00] text-white text-[14px] font-semibold rounded-[6px] transition-colors duration-200 cursor-pointer"
+            >
               Proceed to Checkout
             </button>
 
@@ -143,6 +155,14 @@ const Cart = () => {
           </div>
         </div>
       </div>
+
+      {/* Checkout (UI-only) notice */}
+      {showCheckoutNotice && (
+        <div className="fixed bottom-6 right-6 bg-[#151515] border border-[#292929] rounded-[8px] px-4 py-3 flex items-center gap-2 z-50">
+          <Info size={15} strokeWidth={2.5} className="text-[#FF6B00]" />
+          <span className="text-[13px] text-white">Checkout coming soon</span>
+        </div>
+      )}
     </main>
   );
 };
