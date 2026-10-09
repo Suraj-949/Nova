@@ -1,29 +1,30 @@
 import { ShopProvider } from "./context/ShopProvider";
-import { useShop } from "./context/shop";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import ProductDetail from "./pages/ProductDetail";
+import Cart from "./pages/Cart";
 import Footer from "./components/Footer";
 
-const CurrentPage = () => {
-  const { route } = useShop();
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-  if (route.page === "product" && route.id != null) {
-    return <ProductDetail key={route.id} id={route.id} />;
-  }
 
-  return <Home />;
-};
 
-function App() {
+const App = () => {
   return (
-    <ShopProvider>
-      <div className="min-h-screen w-full bg-[#0B0B0D]">
-        <Navbar />
-        <CurrentPage />
-        <Footer />
-      </div>
-    </ShopProvider>
+    <BrowserRouter>
+      <ShopProvider>
+        <div className="min-h-screen w-full bg-[#0B0B0D]">
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/product/:id" element={<ProductDetail />} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
+          <Footer />
+        </div>
+      </ShopProvider>
+    </BrowserRouter>
+
   );
 }
 

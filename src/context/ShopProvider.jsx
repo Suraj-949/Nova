@@ -2,14 +2,8 @@ import { useState, useMemo, useCallback } from "react";
 import { ShopContext } from "./shop";
 
 export const ShopProvider = ({ children }) => {
-  const [route, setRoute] = useState({ page: "home", id: null });
   const [cartItems, setCartItems] = useState([]);
   const [wishlist, setWishlist] = useState(new Set());
-
-  const navigate = useCallback((page, id = null) => {
-    setRoute({ page, id });
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
 
   const addToCart = useCallback((product, quantity = 1) => {
     setCartItems((prev) => {
@@ -23,6 +17,20 @@ export const ShopProvider = ({ children }) => {
       }
       return [...prev, { product, quantity }];
     });
+  }, []);
+
+  const updateCartQuantity = useCallback((id, quantity) => {
+    setCartItems((prev) =>
+      prev.map((item) =>
+        item.product.id === id
+          ? { ...item, quantity: Math.max(1, quantity) }
+          : item
+      )
+    );
+  }, []);
+
+  const removeFromCart = useCallback((id) => {
+    setCartItems((prev) => prev.filter((item) => item.product.id !== id));
   }, []);
 
   const toggleWishlist = useCallback((id) => {
@@ -42,17 +50,36 @@ export const ShopProvider = ({ children }) => {
     [cartItems]
   );
 
+  const cartTotal = useMemo(
+    () =>
+      cartItems.reduce(
+        (sum, item) => sum + item.product.price * item.quantity,
+        0
+      ),
+    [cartItems]
+  );
+
   const value = useMemo(
     () => ({
-      route,
-      navigate,
       cartItems,
       addToCart,
+      updateCartQuantity,
+      removeFromCart,
       cartCount,
+      cartTotal,
       wishlist,
       toggleWishlist,
     }),
-    [route, navigate, cartItems, addToCart, cartCount, wishlist, toggleWishlist]
+    [
+      cartItems,
+      addToCart,
+      updateCartQuantity,
+      removeFromCart,
+      cartCount,
+      cartTotal,
+      wishlist,
+      toggleWishlist,
+    ]
   );
 
   return <ShopContext.Provider value={value}>{children}</ShopContext.Provider>;

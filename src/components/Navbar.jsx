@@ -1,4 +1,6 @@
 import { Search, ShoppingBag, User } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+
 import { useShop } from "../context/shop";
 
 const navLinks = [
@@ -8,7 +10,8 @@ const navLinks = [
 ];
 
 const Navbar = () => {
-  const { cartCount, navigate } = useShop();
+  const { cartCount } = useShop();
+  const navigate = useNavigate();
 
   return (
     <nav className="w-full h-[66px] bg-[#0B0B0D] border-b border-[#242424] select-none">
@@ -16,7 +19,7 @@ const Navbar = () => {
 
         {/* LEFT: Brand */}
         <button
-          onClick={() => navigate("home")}
+          onClick={() => navigate("/")}
           className="flex items-center gap-[11px] cursor-pointer"
           aria-label="Nova home"
         >
@@ -45,11 +48,10 @@ const Navbar = () => {
               href={link.href}
               onClick={(e) => {
                 e.preventDefault();
-                if (link.page) navigate(link.page);
+                if (link.page) navigate("/");
               }}
-              className={`text-[14px] font-semibold transition-colors duration-200 ${
-                link.active ? "text-white" : "text-[#8A8A8E] hover:text-white"
-              }`}
+              className={`text-[14px] font-semibold transition-colors duration-200 ${link.active ? "text-white" : "text-[#8A8A8E] hover:text-white"
+                }`}
             >
               {link.name}
             </a>
@@ -69,6 +71,7 @@ const Navbar = () => {
 
           {/* Shopping Bag */}
           <button
+            onClick={() => navigate("/cart")}
             className="relative text-[#C8C8CC] hover:text-white transition-colors duration-200 cursor-pointer"
             aria-label={`Shopping bag, ${cartCount} items`}
           >

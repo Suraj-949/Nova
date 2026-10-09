@@ -1,17 +1,23 @@
 import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+
+import { ArrowLeft } from "lucide-react";
 import { ShoppingBag, Heart, Check } from "lucide-react";
+
 import products from "../data/products.json";
 import { useShop } from "../context/shop";
+
 import ProductGallery from "../components/ProductGallery";
 import Rating from "../components/Rating";
 import QuantitySelector from "../components/QuantitySelector";
 import RelatedProducts from "../components/RelatedProducts";
 
-import { ArrowLeft } from "lucide-react";
 
 const formatPrice = (price) => "₹" + price.toLocaleString("en-IN");
 
-const ProductDetail = ({ id }) => {
+const ProductDetail = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
   const { addToCart, wishlist, toggleWishlist } = useShop();
   const [quantity, setQuantity] = useState(1);
   const [toast, setToast] = useState(false);
@@ -31,7 +37,7 @@ const ProductDetail = ({ id }) => {
           <p className="text-[16px] text-[#888] font-medium">Product not found</p>
           <div className="mt-4">
             <button
-              onClick={() => navigate("home")}
+              onClick={() => navigate("/")}
               className="flex items-center gap-2 text-[13px] text-[#777] hover:text-white transition-colors duration-200 cursor-pointer"
             >
               <ArrowLeft size={15} strokeWidth={1.8} />
@@ -61,7 +67,7 @@ const ProductDetail = ({ id }) => {
     <main className="w-full px-11 py-6">
       <div className="max-w-[1200px] mx-auto">
         <button
-          onClick={() => navigate("home")}
+          onClick={() => navigate("/")}
           className="flex items-center gap-2 text-[13px] text-[#777] hover:text-white transition-colors duration-200 cursor-pointer"
         >
           <ArrowLeft size={15} strokeWidth={1.8} />

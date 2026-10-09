@@ -1,15 +1,18 @@
 import { Heart, Star, ShoppingBag } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+
 import { useShop } from "../context/shop";
 
 const formatPrice = (price) => "₹" + price.toLocaleString("en-IN");
 
 const ProductCard = ({ product }) => {
-  const { navigate, wishlist, toggleWishlist, addToCart } = useShop();
+  const { wishlist, toggleWishlist, addToCart } = useShop();
+  const navigate = useNavigate();
   const isFavorite = wishlist.has(product.id);
 
   return (
     <div
-      onClick={() => navigate("product", product.id)}
+      onClick={() => navigate(`/product/${product.id}`)}
       className="bg-[#151515] border border-[#292929] rounded-[8px] overflow-hidden transition-all duration-200 hover:border-[#3a3a3a] group cursor-pointer"
     >
       {/* Image */}
