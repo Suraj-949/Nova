@@ -76,7 +76,6 @@ Nova/
 │   ├── index.css                 # Base styles & Tailwind CSS import
 │   └── main.jsx                  # React DOM entry point
 ├── package.json                  # Dependencies and scripts
-├── react-assesment.md            # Assessment requirements specification
 ├── README.md                     # Project overview and setup documentation
 └── vite.config.js                # Vite build and plugin configurations
 ```
