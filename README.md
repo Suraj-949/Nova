@@ -1,244 +1,195 @@
 # NOVA — Mini E-Commerce Application
 
-A modern, responsive mini e-commerce application built with React as part of a React Developer Internship take-home assessment.
+A clean, modern mini e-commerce web application built with **React 19**, **Vite**, **Tailwind CSS v4**, and **React Router v7** as part of the React Developer Intern take-home assessment.
 
-The application allows users to browse products, search and filter products by category, view product details, and manage their shopping cart. Product data is stored locally in a JSON file, and cart data is persisted using browser `localStorage`.
+The application allows users to browse an extensive product catalog, search and filter products by category, view comprehensive product details, and manage their cart with persistent `localStorage` support.
+
+---
 
 ## ✨ Features
 
-* Browse products in a responsive grid
-* Search products by name
-* Filter products by category
-* View detailed product information
-* Add products to the shopping cart
-* Remove products from the cart
-* Increase or decrease product quantity
-* Display total number of cart items
-* Calculate total cart price
-* Persist cart data using `localStorage`
-* Responsive design for desktop, tablet, and mobile
-* Loading skeleton states
-* Empty search results state
-* Empty cart state
-* Product not found state
-* Add-to-cart feedback notification
-* Reusable React components
+- **Product Catalog Listing**: High-contrast, dark-themed 5-column product grid with product cards.
+- **Search Functionality**: Real-time search across product titles, categories, and descriptions with an instant clear (`X`) button.
+- **Category Filtering**: Dynamic category pills derived directly from the catalog.
+- **Combined Search & Filters**: Search queries and category filters work seamlessly together.
+- **Empty State Handling**:
+  - **No Products Found**: Clean empty state with a one-click **"Clear Filters"** button when no items match search or category criteria.
+  - **Empty Cart**: Intuitive empty cart display with a **"Continue Shopping"** action button.
+  - **Product Not Found**: Informative fallback page with a **"Back to Products"** button for invalid product IDs.
+- **Product Details Page (`/product/:id`)**:
+  - Interactive multi-angle product gallery.
+  - Star ratings with review count display.
+  - Highlighted specifications and formatted prices.
+  - Quantity selection before adding to cart.
+  - Related product recommendations based on category.
+  - Interactive toast notification on cart addition.
+- **Shopping Cart (`/cart`)**:
+  - Add items to the cart from both catalog cards and detail pages.
+  - Increase/decrease product quantity with safety bounds.
+  - Remove items from the cart.
+  - Real-time calculation of total items and total price formatted in Indian Rupees (₹).
+  - Order summary sidebar with subtotal, free shipping indicator, and total.
+  - **Cart Persistence**: Automatically persists cart data using browser `localStorage` across page reloads.
+- **Client-Side Routing**: Handled using `react-router-dom` with fallback redirect for unknown routes.
+
+---
 
 ## 🛠️ Tech Stack
 
-### Frontend
+- **Core**: React 19 (`react`, `react-dom`)
+- **Build Tool**: Vite 8
+- **Routing**: React Router v7 (`react-router-dom`)
+- **Styling**: Tailwind CSS v4 (`@tailwindcss/vite`)
+- **Icons**: Lucide React (`lucide-react`)
+- **State Management**: React Context API (`ShopContext` + `ShopProvider`) with React Hooks (`useState`, `useEffect`, `useCallback`, `useMemo`)
+- **Storage**: Browser `localStorage` API
+- **Linter**: Oxlint
 
-* React
-* Vite
-* React Router
-* Tailwind CSS
-* JavaScript (ES6+)
-* Context API
-* `useReducer`
-* `localStorage`
-
+---
 
 ## 📁 Project Structure
 
 ```text
-src/
-├── assets/
-│
-├── components/
-│   ├── Navbar.jsx
-│   ├── SearchBar.jsx
-│   ├── CategoryFilter.jsx
-│   ├── ProductCard.jsx
-│   ├── ProductGrid.jsx
-│   ├── Rating.jsx
-│   ├── QuantitySelector.jsx
-│   ├── CartItem.jsx
-│   ├── EmptyState.jsx
-│   └── Loader.jsx
-│
-├── context/
-│   └── CartContext.jsx
-│
-├── data/
-│   └── products.json
-│
-├── hooks/
-│   └── useLocalStorage.js
-│
-├── pages/
-│   ├── Home.jsx
-│   ├── ProductDetails.jsx
-│   └── Cart.jsx
-│
-├── utils/
-│   └── cartUtils.js
-│
-├── App.jsx
-├── main.jsx
-└── index.css
+Nova/
+├── src/
+│   ├── components/
+│   │   ├── CategoryFilter.jsx    # Category selection pills
+│   │   ├── Footer.jsx            # Minimalist website footer
+│   │   ├── Navbar.jsx            # Header with search, nav links & live cart badge
+│   │   ├── ProductCard.jsx       # Individual product card (rating, image, price, add)
+│   │   ├── ProductGallery.jsx    # Multi-angle image viewer for product details
+│   │   ├── ProductGrid.jsx       # Product grid with "No products found" empty state
+│   │   ├── QuantitySelector.jsx  # Stepper component (+ / -) with input sanitization
+│   │   ├── Rating.jsx            # Star rating score and review count badge
+│   │   ├── RelatedProducts.jsx   # "You might also like" recommendations
+│   │   └── SearchBar.jsx         # Search input with clear (X) trigger
+│   ├── context/
+│   │   ├── shop.js               # ShopContext definition & useShop consumer hook
+│   │   └── ShopProvider.jsx      # State management, cart calculations & localStorage sync
+│   ├── data/
+│   │   └── products.json         # Local dummy product catalog
+│   ├── pages/
+│   │   ├── Cart.jsx              # Shopping cart view with item list & order summary
+│   │   ├── Home.jsx              # Main catalog page with search, filters & grid
+│   │   └── ProductDetail.jsx     # Detailed product view with gallery & specifications
+│   ├── App.jsx                   # Application layout, routes & fallback redirection
+│   ├── index.css                 # Base styles & Tailwind CSS import
+│   └── main.jsx                  # React DOM entry point
+├── package.json                  # Dependencies and scripts
+├── react-assesment.md            # Assessment requirements specification
+├── README.md                     # Project overview and setup documentation
+└── vite.config.js                # Vite build and plugin configurations
 ```
 
-> The exact folder structure may vary depending on the final implementation.
+---
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-Make sure you have the following installed:
+Ensure you have the following installed on your machine:
+- **Node.js**: v18.0.0 or higher
+- **npm**: v9.0.0 or higher
 
-* Node.js 18+
-* npm
+### Installation & Run Steps
 
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Suraj-949/Nova.git
+   cd Nova
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Start the local development server:**
+   ```bash
+   npm run dev
+   ```
+   Open your browser and navigate to `http://localhost:5173`.
+
+4. **Build for production:**
+   ```bash
+   npm run build
+   ```
+
+5. **Preview production build:**
+   ```bash
+   npm run preview
+   ```
+
+---
 
 ## 📦 Product Data
 
-The application does not use a backend or external product API.
+Product data is stored locally in `src/data/products.json` without any external API or backend dependency.
 
-Product information is stored in:
-
-```text
-src/data/products.json
-```
-
-Each product contains information such as:
+Each product object adheres to the following structure:
 
 ```json
 {
   "id": 1,
-  "name": "Wireless Headphones",
+  "title": "Wireless Noise Cancelling Headphones",
   "category": "Electronics",
-  "price": 2499,
-  "rating": 4.5,
-  "image": "/products/headphones.jpg",
-  "description": "Premium wireless headphones with active noise cancellation."
+  "price": 12999,
+  "rating": 4.7,
+  "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
+  "description": "Premium wireless headphones with active noise cancellation and up to 30 hours of battery life."
 }
 ```
 
-## 🛒 Cart Management
+---
 
-Cart state is managed using React's Context API and `useReducer`.
+## 🛒 Cart Management & Persistence
 
-The cart supports:
+Cart state is centralized using React's Context API (`ShopProvider.jsx`).
 
-* Adding products
-* Removing products
-* Increasing quantity
-* Decreasing quantity
-* Calculating total items
-* Calculating total price
+### Key Features:
+- **`localStorage` Hydration**: The cart initializes via a lazy initializer (`useState(loadCart)`), safely reading and validating stored items from `nova-cart` in `localStorage`.
+- **Automatic Synchronization**: A dedicated `useEffect` automatically serializes and writes `cartItems` to `localStorage` on any add, update, or remove operation.
+- **Data Integrity & Fallback**:
+  - Malformed JSON or private browsing restrictions are handled safely via `try/catch` with fallback to `[]`.
+  - Stored items are verified against the catalog to refresh prices and discard stale entries.
+  - Quantities are strictly coerced into positive integers (`Math.floor(n) >= 1`).
 
-Cart data is automatically stored in the browser's `localStorage`, allowing the cart to persist even after refreshing or reopening the page.
-
-## 🔎 Search & Filtering
-
-Users can:
-
-* Search products by name
-* Filter products by category
-* Combine search and category filtering
-* Clear filters when no products are found
-
-The original product data remains unchanged while the displayed product list is derived from the active search and filter state.
+---
 
 ## 🧭 Routing
 
-React Router is used for application navigation.
+Client-side navigation is powered by `react-router-dom`:
 
-Main routes include:
+| Path | Component | Description |
+| :--- | :--- | :--- |
+| `/` | `Home.jsx` | Product catalog with search and category filtering |
+| `/product/:id` | `ProductDetail.jsx` | Full product view with gallery, highlights, and add to cart |
+| `/cart` | `Cart.jsx` | Shopping cart list, quantity controls, and order summary |
+| `*` | `<Navigate to="/" replace />` | Wildcard route redirecting invalid URLs to Home |
 
-```text
-/                    → Product Listing
-/products/:id        → Product Details
-/cart                → Shopping Cart
-```
+---
 
-Invalid product IDs display a product-not-found state.
+## 🎨 Design & Aesthetics
 
-## 📱 Responsive Design
+- **Dark-First Theme**: Crafted with high-contrast surfaces (`#0B0B0D` background, `#151515` cards, and `#292929` borders).
+- **Vibrant Accent**: Electric orange (`#FF6B00`) for primary buttons, active badges, and highlights.
+- **Micro-Interactions**: Hover transitions on product cards, category pills, wishlist buttons, and cart actions.
+- **Typography & Formatting**: Clean typography with currency values formatted according to Indian numbering standards (`₹` with `en-IN` formatting).
 
-The application is designed to work across:
+---
 
-* Desktop
-* Laptop
-* Tablet
-* Mobile
+## 🧪 Assessment Requirements Mapping
 
-The product grid, navigation, search, filters, product details, and cart layout adapt according to the screen size.
-
-## ⚠️ State Handling
-
-The application handles different UI states including:
-
-### Loading State
-
-Displays skeleton placeholders while product data is being prepared.
-
-### Empty State
-
-Displayed when:
-
-* No products match the search
-* No products match the selected category
-* The shopping cart is empty
-
-### Error / Not Found State
-
-Displayed when a requested product does not exist.
-
-## 🎨 UI Design
-
-NOVA uses a dark-first visual design.
-
-### Design characteristics
-
-* Dark background
-* Charcoal product cards
-* Orange primary accent
-* High-contrast typography
-* Subtle borders
-* Rounded cards
-* Responsive layouts
-* Minimal animations
-
-The design focuses on usability and clarity rather than unnecessary visual effects.
-
-## 🧩 Reusable Components
-
-The application is structured around reusable components such as:
-
-* `Navbar`
-* `ProductCard`
-* `ProductGrid`
-* `SearchBar`
-* `CategoryFilter`
-* `Rating`
-* `QuantitySelector`
-* `CartItem`
-* `OrderSummary`
-* `EmptyState`
-* `LoadingSkeleton`
-
-This keeps the application modular and easier to maintain.
-
-## 🧪 Testing Checklist
-
-Before submitting the project, verify:
-
-* [ ] Products load correctly
-* [ ] Search works correctly
-* [ ] Category filtering works
-* [ ] Search + category filtering work together
-* [ ] Empty search state appears
-* [ ] Product details page works
-* [ ] Invalid product ID shows not-found state
-* [ ] Product can be added to cart
-* [ ] Existing cart item quantity increases correctly
-* [ ] Quantity can be increased/decreased
-* [ ] Product can be removed
-* [ ] Cart item count is correct
-* [ ] Cart total price is correct
-* [ ] Cart persists after page refresh
-* [ ] Empty cart state works
-* [ ] Layout works on mobile
-* [ ] Layout works on tablet
-* [ ] Layout works on desktop
+| Requirement | Implementation Detail | Status |
+| :--- | :--- | :---: |
+| **Product Data** | Local dummy `products.json` with title, image, price, category, rating | ✅ Met |
+| **Product Listing** | 5-column product grid with product cards | ✅ Met |
+| **Search** | Instant search filter with clear (`X`) button | ✅ Met |
+| **Category Filter** | Category pills dynamically generated from catalog | ✅ Met |
+| **Empty State** | "No products found" with "Clear Filters" reset button | ✅ Met |
+| **Product Details** | Dynamic `/product/:id` route with complete specifications | ✅ Met |
+| **Shopping Cart** | Add, remove, and increase/decrease quantity | ✅ Met |
+| **Cart Totals** | Total items badge and computed total order price | ✅ Met |
+| **Cart Persistence** | `localStorage` hydration and auto-sync | ✅ Met |
+| **UI & Code Quality** | Reusable components, React Hooks (`useMemo`, `useCallback`), error handling | ✅ Met |
+| **README & Setup** | Comprehensive setup, clone, run, and architecture documentation | ✅ Met |

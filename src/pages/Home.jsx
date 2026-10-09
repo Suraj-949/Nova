@@ -80,7 +80,13 @@ const Home = () => {
 
       {/* Product Grid */}
       <section className="mx-auto px-11 pb-16">
-        <ProductGrid products={filteredProducts} />
+        <ProductGrid
+          products={filteredProducts}
+          onReset={() => {
+            setSearch("");
+            setSelectedCategory("All");
+          }}
+        />
       </section>
     </main>
   );
