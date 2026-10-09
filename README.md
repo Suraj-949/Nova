@@ -176,19 +176,3 @@ Client-side navigation is powered by `react-router-dom`:
 - **Typography & Formatting**: Clean typography with currency values formatted according to Indian numbering standards (`₹` with `en-IN` formatting).
 
 ---
-
-## 🧪 Assessment Requirements Mapping
-
-| Requirement | Implementation Detail | Status |
-| :--- | :--- | :---: |
-| **Product Data** | Local dummy `products.json` with title, image, price, category, rating | ✅ Met |
-| **Product Listing** | 5-column product grid with product cards | ✅ Met |
-| **Search** | Instant search filter with clear (`X`) button | ✅ Met |
-| **Category Filter** | Category pills dynamically generated from catalog | ✅ Met |
-| **Empty State** | "No products found" with "Clear Filters" reset button | ✅ Met |
-| **Product Details** | Dynamic `/product/:id` route with complete specifications | ✅ Met |
-| **Shopping Cart** | Add, remove, and increase/decrease quantity | ✅ Met |
-| **Cart Totals** | Total items badge and computed total order price | ✅ Met |
-| **Cart Persistence** | `localStorage` hydration and auto-sync | ✅ Met |
-| **UI & Code Quality** | Reusable components, React Hooks (`useMemo`, `useCallback`), error handling | ✅ Met |
-| **README & Setup** | Comprehensive setup, clone, run, and architecture documentation | ✅ Met |
